@@ -54,7 +54,7 @@ public class Procreation : MonoBehaviour
         stats.enabled = true;
 
         Genetics genetics = gameObject.GetComponent<Genetics>();
-        stats.text = "speed: " + genetics.speed +  "\n attack: " + genetics.speed; // HERE we should put ATTACK!!!
+        stats.text = "speed: " + genetics.speed +  "\n color: " + genetics.hue; // HERE we should put ATTACK!!!
     }
 
     
