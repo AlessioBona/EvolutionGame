@@ -8,7 +8,18 @@ public class Procreation : MonoBehaviour
 
 
     public bool toggleOn = false;
+    public TextMeshProUGUI togOn;
+    Canvas thisCanvas;
+    public Vector3 thisGuiPosition;
 
+    private void Awake()
+    {
+        if (thisCanvas == null)
+        {
+            thisCanvas = togOn.GetComponentInParent<Canvas>();
+            thisGuiPosition = thisCanvas.transform.position - gameObject.transform.position;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +35,9 @@ public class Procreation : MonoBehaviour
 
     public void Procreate()
     {
-        
+        toggleOn = false;
+        togOn.enabled = false;
+
         GameObject firstChild = Instantiate(gameObject);
         firstChild.GetComponent<Genetics>().Mutation();
     }
@@ -33,14 +46,24 @@ public class Procreation : MonoBehaviour
 
     private void OnMouseDown()
     {
-        toggleOn = !toggleOn;
-        if (GetComponentInChildren<TextMeshProUGUI>())
-        {
-            TextMeshProUGUI togOn = GetComponentInChildren<TextMeshProUGUI>();
-            togOn.enabled = !togOn.enabled;
-        }
+        if (toggleOn) {
+            toggleOn = false;
+            togOn.enabled = false;
 
-        Procreate();
+        } else
+        {
+            if (FindObjectOfType<RoundManager>().HowManyTogOn() < 3)
+            {
+                thisCanvas.transform.rotation = Quaternion.Euler(90, 0, 0);
+                thisCanvas.transform.position = gameObject.transform.position + thisGuiPosition;
+                toggleOn = true;
+                togOn.enabled = true;
+               
+            }
+        }
+        
+
+        
 
         
     }

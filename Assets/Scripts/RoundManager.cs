@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+
+    public bool roundOn;
+
+    public int HowManyTogOn()
+    {
+        int result = 0;
+        Procreation[] orgs = FindObjectsOfType<Procreation>();
+        foreach(Procreation org in orgs)
+        {
+            if (org.toggleOn)
+            {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +31,28 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("space"))
+        {
+            int togsOn = HowManyTogOn();
+            if(togsOn == 3)
+            {
+                LetProcreate();
+            }
+        }
     }
+
+    void LetProcreate()
+    {
+        Procreation[] orgs = FindObjectsOfType<Procreation>();
+        foreach (Procreation org in orgs)
+        {
+            if (org.toggleOn)
+            {
+                org.Procreate();
+            }
+        }
+    }
+
+
+
 }
