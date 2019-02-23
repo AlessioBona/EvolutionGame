@@ -21,7 +21,7 @@ public class MovementScript : MonoBehaviour
         if (Input.GetButtonDown("Horizontal"))
         {
             // the cube is going to move upwards in 10 units per second
-            rb.velocity = new Vector3(5, 0, 0);
+            rb.velocity = new Vector3(10, 0, 0);
             moving = true;
             Debug.Log("jump");
         }
