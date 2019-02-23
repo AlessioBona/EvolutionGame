@@ -7,6 +7,8 @@ public class RoundManager : MonoBehaviour
 
     public bool roundOn;
 
+    public float roundTime;
+
     public int HowManyTogOn()
     {
         int result = 0;
@@ -25,7 +27,7 @@ public class RoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -67,6 +69,9 @@ public class RoundManager : MonoBehaviour
             {
                 org.Procreate();
 
+            } else
+            {
+                GameObject.Destroy(org.gameObject);
             }
         }
     }
