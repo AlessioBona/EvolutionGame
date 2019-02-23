@@ -9,6 +9,7 @@ public class Procreation : MonoBehaviour
 
     public bool toggleOn = false;
     public TextMeshProUGUI togOn;
+    public TextMeshProUGUI stats;
     Canvas thisCanvas;
     public Vector3 thisGuiPosition;
 
@@ -30,16 +31,30 @@ public class Procreation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (stats.enabled || togOn.enabled)
+        {
+            thisCanvas.transform.rotation = Quaternion.Euler(90, 0, 0);
+            thisCanvas.transform.position = gameObject.transform.position + thisGuiPosition;
+        }
     }
 
     public void Procreate()
     {
         toggleOn = false;
         togOn.enabled = false;
+        stats.enabled = false;
 
         GameObject firstChild = Instantiate(gameObject);
         firstChild.GetComponent<Genetics>().Mutation();
+        gameObject.GetComponent<Genetics>().Mutation();
+    }
+
+    public void ToggleStatsOn()
+    {
+        stats.enabled = true;
+
+        Genetics genetics = gameObject.GetComponent<Genetics>();
+        stats.text = "speed: " + genetics.speed +  "\n attack: " + genetics.speed; // HERE we should put ATTACK!!!
     }
 
     
@@ -54,8 +69,7 @@ public class Procreation : MonoBehaviour
         {
             if (FindObjectOfType<RoundManager>().HowManyTogOn() < 3)
             {
-                thisCanvas.transform.rotation = Quaternion.Euler(90, 0, 0);
-                thisCanvas.transform.position = gameObject.transform.position + thisGuiPosition;
+
                 toggleOn = true;
                 togOn.enabled = true;
                

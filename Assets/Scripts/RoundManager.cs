@@ -38,6 +38,23 @@ public class RoundManager : MonoBehaviour
             {
                 LetProcreate();
             }
+            
+        }
+
+        if (Input.GetKeyDown("s"))
+        {
+            Procreation[] orgs = FindObjectsOfType<Procreation>();
+            foreach (Procreation org in orgs)
+            {
+                if (!org.stats.enabled)
+                {
+                    org.ToggleStatsOn();
+                } else
+                {
+                    org.stats.enabled = false;
+                }
+            }
+            
         }
     }
 
@@ -49,6 +66,7 @@ public class RoundManager : MonoBehaviour
             if (org.toggleOn)
             {
                 org.Procreate();
+
             }
         }
     }
