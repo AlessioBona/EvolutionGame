@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    public float health = 100;
+    public float health = 1;
     public float hue = 0;
     // Start is called before the first frame update
     void Start()
@@ -29,5 +29,10 @@ public class TakeDamage : MonoBehaviour
     private void GetDamaged(GameObject organism)
     {
         health -= organism.GetComponent<Genetics>().getDamage(hue);
+        Debug.Log(health);
+        if(health <= 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 }

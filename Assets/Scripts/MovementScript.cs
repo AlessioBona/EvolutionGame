@@ -45,7 +45,8 @@ public class MovementScript : MonoBehaviour
         elapsedTime += Time.deltaTime;
         if(elapsedTime > 1)
         {
-            rb.velocity = GetComponent<Genetics>().getMoveVector();
+            rb.velocity = GetComponent<Genetics>().getMoveVector()*0.7f;
+            elapsedTime = 0f;
         }
     }
 

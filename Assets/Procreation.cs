@@ -45,6 +45,9 @@ public class Procreation : MonoBehaviour
         stats.enabled = false;
 
         GameObject firstChild = Instantiate(gameObject);
+        firstChild.transform.position -= new Vector3(0f, 0f, 1f);
+        firstChild.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
         firstChild.GetComponent<Genetics>().Mutation();
         gameObject.GetComponent<Genetics>().Mutation();
         //firstChild.GetComponent<Rigidbody>().velocity = firstChild.GetComponent<Genetics>().getMoveVector();

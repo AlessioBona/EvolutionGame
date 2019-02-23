@@ -66,7 +66,7 @@ public class Genetics : MonoBehaviour
         float z = Mathf.Sin(angle / (2 * Mathf.PI)) * speed;
         float x = Mathf.Cos(angle / (2 * Mathf.PI)) * speed;
 
-        float dir = Random.Range(0, 1);
+        float dir = Random.Range(0, 2);
 
         if (dir < 0.5)
         {
