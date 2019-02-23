@@ -8,16 +8,17 @@ public class Genetics : MonoBehaviour
     public float speed;
     public float directionAngle;
     public float hue;
+    public MeshRenderer myRenderer;
 
     public void Mutation()
     {
         // hue 0-359
         // +- 10
 
-        float hueDiv = Random.Range(-20, 21);
+        float hueDiv = Random.Range(-60, 61);
         // Debug.Log(hueDiv);
         hue += hueDiv;
-        hue %= 360;
+        hue %= 360f;
 
         // speed +- 5
         // boundary 0; 40
@@ -55,8 +56,15 @@ public class Genetics : MonoBehaviour
         }
         directionAngle += angleDiv;
         directionAngle = Mathf.Clamp(directionAngle, 0, 20);
+
+        ChangeColor();
     }
 
+    public void ChangeColor()
+    {
+        Color newColor = getRGB();
+        myRenderer.material.SetColor("ActiveColor", newColor);
+    }
     
 
     public Vector3 getMoveVector()
@@ -80,7 +88,8 @@ public class Genetics : MonoBehaviour
 
     public Color getRGB()
     {
-        Color rgb = Color.HSVToRGB(hue / 360, 1, 1);
+        Color rgb = Color.HSVToRGB(hue / 360f, 1, 1);
+        Debug.Log(rgb);
 
         return rgb;
     }
