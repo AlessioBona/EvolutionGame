@@ -55,15 +55,16 @@ public class Genetics : MonoBehaviour
         }
         directionAngle += angleDiv;
         directionAngle = Mathf.Clamp(directionAngle, 0, 20);
-
     }
+
+    
 
     public Vector3 getMoveVector()
     {
         float angle = Random.Range(0, directionAngle+1);
 
-        float z = Mathf.Sin(angle) * speed;
-        float x = Mathf.Cos(angle) * speed;
+        float z = Mathf.Sin(angle / (2 * Mathf.PI)) * speed;
+        float x = Mathf.Cos(angle / (2 * Mathf.PI)) * speed;
 
         float dir = Random.Range(0, 1);
 
@@ -75,6 +76,23 @@ public class Genetics : MonoBehaviour
         Vector3 velocity = new Vector3(x, 0, z);
 
         return velocity;      
+    }
+
+    public Color getRGB()
+    {
+        Color rgb = Color.HSVToRGB(hue / 360, 1, 1);
+
+        return rgb;
+    }
+
+    public float getDamage(float enemy_hue)
+    {
+
+        float h = Mathf.Abs(hue - enemy_hue) % 360;
+
+        float dmg = Mathf.Min(Mathf.Abs(h), Mathf.Abs(360 - h)) / 90;
+        return dmg;
+
     }
 
     // Start is called before the first frame update
