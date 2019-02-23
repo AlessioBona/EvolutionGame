@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Random;
-
 
 
 public class Genetics : MonoBehaviour
@@ -16,31 +14,36 @@ public class Genetics : MonoBehaviour
         // hue 0-359
         // +- 10
 
-        float hueDiv = Random.Range(-10, 11);
-        hue = hue + hueDiv;
-        speed = hue % 360;
+        float hueDiv = Random.Range(-20, 21);
+        Debug.Log(hueDiv);
+        hue += hueDiv;
+        hue %= 360;
 
         // speed +- 5
-        // boundary 0; 20
+        // boundary 0; 40
 
-        float speedDiv = Random.Range(-5, 6);
+        float speedDiv = Random.Range(-7, 8);
         // near the bouandry we want to move away a bit, so don't stay in the extremes
-        if (speed > 17)
+        Debug.Log(speedDiv);
+        if (speed > 36)
         {
-            directionAngle = 17;
+            directionAngle = 36;
         }
-        if (directionAngle < 3)
+        if (directionAngle < 4)
         {
-            directionAngle = 3;
+            directionAngle = 4;
         }
-        speed = speed + speedDiv;
-        speed = Mathf.Clamp(speed, 0, 20);
+        speed += speedDiv;
+        speed = Mathf.Clamp(speed, 0, 40);
+
+
 
 
         // angle +- 3
         // boundary 0; 20
 
         float angleDiv = Random.Range(-3, 4);
+        Debug.Log(angleDiv);
         // near the bouandry we want to move away a bit, so don't stay in the extremes
         if (directionAngle > 17)
         {
@@ -50,7 +53,7 @@ public class Genetics : MonoBehaviour
         {
             directionAngle = 3;
         }
-        directionAngle = directionAngle + angleDiv;
+        directionAngle += angleDiv;
         directionAngle = Mathf.Clamp(directionAngle, 0, 20);
 
     }
