@@ -15,7 +15,7 @@ public class Genetics : MonoBehaviour
         // +- 10
 
         float hueDiv = Random.Range(-20, 21);
-        Debug.Log(hueDiv);
+        // Debug.Log(hueDiv);
         hue += hueDiv;
         hue %= 360;
 
@@ -24,7 +24,7 @@ public class Genetics : MonoBehaviour
 
         float speedDiv = Random.Range(-7, 8);
         // near the bouandry we want to move away a bit, so don't stay in the extremes
-        Debug.Log(speedDiv);
+        // Debug.Log(speedDiv);
         if (speed > 36)
         {
             directionAngle = 36;
@@ -43,7 +43,7 @@ public class Genetics : MonoBehaviour
         // boundary 0; 20
 
         float angleDiv = Random.Range(-3, 4);
-        Debug.Log(angleDiv);
+        // Debug.Log(angleDiv);
         // near the bouandry we want to move away a bit, so don't stay in the extremes
         if (directionAngle > 17)
         {
