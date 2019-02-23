@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 1423819311}
   - component: {fileID: 1423819309}
   - component: {fileID: 1423819310}
+  - component: {fileID: 2030618046}
   m_Layer: 0
   m_Name: Organisms
   m_TagString: Organism
@@ -343,6 +344,19 @@ MonoBehaviour:
   togOn: {fileID: 1214153620}
   stats: {fileID: 8877982921870817179}
   thisGuiPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &2030618046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058385267501323580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aeec55e42de52e43bfcd1ba24a36598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
 --- !u!1 &3058385268028637123
 GameObject:
   m_ObjectHideFlags: 0

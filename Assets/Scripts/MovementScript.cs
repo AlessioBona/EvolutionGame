@@ -26,15 +26,27 @@ public class MovementScript : MonoBehaviour
             Debug.Log("jump");
         }
 
-        if (moving)
+        //if (moving)
+        //{
+        //    // when the cube has moved over 1 second report it's position
+        //    t = t + Time.deltaTime;
+        //    if (t > 1.0f)
+        //    {
+        //        Debug.Log(gameObject.transform.position.y + " : " + t);
+        //        t = 0.0f;
+        //    }
+        //}
+    }
+
+    float elapsedTime = 0f;
+
+    private void Update()
+    {
+        elapsedTime += Time.deltaTime;
+        if(elapsedTime > 1)
         {
-            // when the cube has moved over 1 second report it's position
-            t = t + Time.deltaTime;
-            if (t > 1.0f)
-            {
-                Debug.Log(gameObject.transform.position.y + " : " + t);
-                t = 0.0f;
-            }
+            rb.velocity = GetComponent<Genetics>().getMoveVector();
         }
     }
+
 }

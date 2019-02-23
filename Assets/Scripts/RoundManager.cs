@@ -28,17 +28,30 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
+        StartCoroutine(Round());
+    }
+
+    bool canProcreate = false;
+
+    IEnumerator Round()
+    {
+        Time.timeScale = 1f;
+        canProcreate = false;
+        yield return new WaitForSeconds(roundTime);
+        Time.timeScale = 0.05f;
+        canProcreate = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && canProcreate)
         {
             int togsOn = HowManyTogOn();
             if(togsOn == 3)
             {
                 LetProcreate();
+                StartCoroutine(Round());
             }
             
         }

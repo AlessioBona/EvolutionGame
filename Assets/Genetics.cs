@@ -106,4 +106,9 @@ public class Genetics : MonoBehaviour
     {
         
     }
+
+    private void Awake()
+    {
+        Mutation();
+    }
 }
