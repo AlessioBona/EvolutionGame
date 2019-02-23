@@ -16,7 +16,6 @@ public class CamMovementScript : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             player.transform.position = new Vector3(Mathf.Clamp(player.transform.position.x + speed * Time.deltaTime, min, max), player.transform.position.y, player.transform.position.z);
-
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
